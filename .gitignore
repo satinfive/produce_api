@@ -1,0 +1,4 @@
+virtual/
+.idea/
+
+personal_info/spiders/config.py
