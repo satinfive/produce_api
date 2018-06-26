@@ -2,3 +2,4 @@ virtual/
 .idea/
 
 personal_info/personal_info/spiders/config.py
+personal_info/images/
