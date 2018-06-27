@@ -1,14 +1,14 @@
 import scrapy
 import scrapy_splash
 import csv
-from .utils import kor_to_utf8
+from .utils import kor_to_utf8, get_current_ranking
 
 
 class PersonalSpider(scrapy.Spider):
 
     name = "ranking"
 
-    start_urls = ['http://produce48.mnet.com/pc/rank/2',
+    start_urls = [get_current_ranking(),
                   ]
 
     def start_requests(self):

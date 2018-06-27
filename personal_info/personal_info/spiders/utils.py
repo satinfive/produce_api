@@ -1,3 +1,8 @@
+import os
+
+current_dir = os.path.dirname(__file__)
+
+
 def normalice_romaji_name(name):
 
     def count_spaces(name):
@@ -29,3 +34,16 @@ def kor_to_utf8(name):
 
     return unicode(name).encode("utf-8")
 
+
+def get_current_ranking():
+
+    with open(os.path.join(current_dir, 'week_rank.txt'), 'r+') as file:
+        t = file.read()
+        splitted = t.split('/')
+        new = int(splitted[-1]) + 1
+        splitted[-1] = str(new)
+        yas = '/'.join(splitted)
+        file.seek(0)
+        file.write(yas)
+
+    return t
