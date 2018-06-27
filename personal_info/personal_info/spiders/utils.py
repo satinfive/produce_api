@@ -24,3 +24,8 @@ def normalice_romaji_name(name):
 
     return name_aux[0].title()+' '+last_name.title()
 
+
+def kor_to_utf8(name):
+
+    return unicode(name).encode("utf-8")
+

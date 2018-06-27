@@ -29,8 +29,8 @@ class MyImagesPipeline(ImagesPipeline):
                 buf.seek(0)
                 checksum = md5sum(buf)
             width, height = image.size
-            # path = 'full/%s' % response.meta['image_name']+"."+response.meta['ext']  # **Here Changed**
-            path = 'full/%s' % response.meta['image_name']  # **Here Changed**
+            path = 'full/%s' % response.meta['image_name']+"."+'jpeg'  # **Here Changed**
+            # path = 'full/%s' % response.meta['image_name']  # **Here Changed**
             self.store.persist_file(
                 path, buf, info,
                 meta={'width': width, 'height': height},
