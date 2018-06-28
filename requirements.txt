@@ -2,3 +2,5 @@ scrapy
 scrapy-splash
 Pillow
 imgurpython
+pandas
+bokeh

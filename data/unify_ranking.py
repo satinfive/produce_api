@@ -11,6 +11,7 @@ produce_data = 'produce_data.csv'
 ranking_num = '2'
 ranking_data_f = os.path.join(files_dir, 'ranking_data_{}.csv'.format(ranking_num))
 
+# pdf = pd.read_csv(personal_data_f)
 pdf = pd.read_csv(produce_data)
 rdf = pd.read_csv(ranking_data_f)
 rdf.rename(columns={'name': 'name_kor'}, inplace=True)
