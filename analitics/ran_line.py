@@ -3,6 +3,8 @@ import plotly.graph_objs as go
 import os
 import pandas as pd
 
+NUM_EP = '2'
+
 current_dir = os.path.dirname(__file__)
 parent_dir = os.path.dirname(current_dir)
 data_dir = os.path.join(parent_dir, 'data')
@@ -11,33 +13,42 @@ produce_data = os.path.join(data_dir, 'produce_data.csv')
 df = pd.read_csv(produce_data)
 
 df.sort_values('rank2_num', inplace=True)
+df_rank1 = df.sort_values('rank1_num')
 
 # TOP 12 CHICAS
 top_12 = df.head(12)
+top12_r1 = df_rank1.head(12)
 
-title = 'Produce 48 TOP 12 Ranking evolution'
+title = 'Produce 48 TOP 12 Ranking evolution'.format(NUM_EP)
 
-labels = top_12['name_rom']
-colors = ['mediumvioletred', 'darkred', 'red', 'orange', 'gold', 'darkkhaki', 'green', 'darkcyan', 'dodgerblue', 'slateblue', 'black', 'brown']
+labels = list(top_12['name_rom'])
+labels1 = [name for name in top12_r1['name_rom'] if name not in labels]
+labels += labels1
 
-rank1 = list(top_12['rank1_num'])
-rank2 = list(top_12['rank2_num'])
+rank1 = [df[df['name_rom'] == girl]['rank1_num'].values[0] for girl in labels]
+rank2 = [df[df['name_rom'] == girl]['rank2_num'].values[0] for girl in labels]
+
+colors = ['mediumvioletred', 'darkred', 'red', 'orange', 'gold', 'darkkhaki', 'green', 'darkcyan', 'dodgerblue', 'slateblue', 'black', 'brown', 'blue', 'green', 'orange', 'red', 'purple', 'pink', 'violet', 'black', 'brown', 'gray', 'teal', 'gold', 'crimson']
+
+maxr = max(max(rank1), max(rank2))
 yvalues = map(list, zip(rank1, rank2))
+#
+# #rosa produce
+# ##FF009C
+#
 
-#rosa produce
-##FF009C
+num_chicas = len(labels)
+mode_size = [12]*num_chicas
 
-mode_size = [12]*12
+line_size = [3]*num_chicas
 
-line_size = [2]*12
-
-x_data = [['EP1', 'EP2']]*12
+x_data = [['<b>EP1</b>', '<b>EP2</b>']]*num_chicas
 
 y_data = yvalues
 
 traces = []
 
-for i in xrange(0, 12):
+for i in xrange(0, num_chicas):
     traces.append(go.Scatter(
         x=x_data[i],
         y=y_data[i],
@@ -68,11 +79,12 @@ layout = go.Layout(
         ticklen=5,
         tickfont=dict(
             family='Arial',
-            size=12,
+            size=16,
             color='rgb(82, 82, 82)',
         ),
     ),
     yaxis=dict(
+        range=[maxr+1, 0],
         showgrid=False,
         zeroline=False,
         showline=False,
@@ -95,26 +107,26 @@ for y_trace, label, color in zip(y_data, labels, colors):
     # labeling the left_side of the plot
     annotations.append(dict(xref='paper', x=0.05, y=y_trace[0],
                                   xanchor='right', yanchor='middle',
-                                  text=label + ' {}'.format(y_trace[0]),
+                                  text="<b>"+label + ' {}</b>'.format(y_trace[0]),
                                   font=dict(family='Arial',
                                             size=16,
-                                            color=colors,),
+                                            color=color,),
                                   showarrow=False))
     # labeling the right_side of the plot
     annotations.append(dict(xref='paper', x=0.95, y=y_trace[1],
                                   xanchor='left', yanchor='middle',
-                                  text='{}%'.format(y_trace[1]),
+                                  text='<b>{}</b>'.format(y_trace[1]),
                                   font=dict(family='Arial',
                                             size=16,
-                                            color=colors,),
+                                            color=color,),
                                   showarrow=False))
 # Title
-annotations.append(dict(xref='paper', yref='paper', x=0.0, y=1.05,
+annotations.append(dict(xref='paper', yref='paper', x=0.3, y=1.05,
                               xanchor='left', yanchor='bottom',
                               text=title,
                               font=dict(family='Arial',
                                         size=30,
-                                        color='rgb(37,37,37)'),
+                                        color='#FF009C'),
                               showarrow=False))
 # Source
 annotations.append(dict(xref='paper', yref='paper', x=0.5, y=-0.1,
