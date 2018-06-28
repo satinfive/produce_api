@@ -3,3 +3,17 @@ virtual/
 
 personal_info/personal_info/spiders/config.py
 personal_info/images/
+data/produce_data.csv
+personal_info/imag_data.csv
+personal_info/personal_data.csv
+personal_info/personal_info/__init__.pyc
+personal_info/personal_info/items.pyc
+personal_info/personal_info/pipelines.pyc
+personal_info/personal_info/settings.pyc
+personal_info/personal_info/spiders/__init__.pyc
+personal_info/personal_info/spiders/config.pyc
+personal_info/personal_info/spiders/personal_data.pyc
+personal_info/personal_info/spiders/ranking.pyc
+personal_info/personal_info/spiders/utils.pyc
+personal_info/ranking_data_1.csv
+personal_info/ranking_data_2.csv

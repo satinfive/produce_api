@@ -4,3 +4,5 @@ Pillow
 imgurpython
 pandas
 bokeh
+plotly
+numpy
