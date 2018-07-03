@@ -13,3 +13,4 @@ data_dir = os.path.join(parent_dir, 'data')
 
 produce_data = os.path.join(data_dir, 'produce_data.csv')
 produce_color = '#FF009C'
+current_rank = '4'
