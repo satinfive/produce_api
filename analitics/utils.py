@@ -3,7 +3,7 @@ import plotly.graph_objs as go
 import os
 import pandas as pd
 from bokeh.io import output_file, show
-from bokeh.models import ColumnDataSource, Title
+from bokeh.models import ColumnDataSource, Title, HoverTool
 from bokeh.palettes import Magma256
 from bokeh.plotting import figure
 

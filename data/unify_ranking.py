@@ -8,7 +8,7 @@ files_dir = os.path.join(parent_dir, "personal_info")
 
 produce_data = 'produce_data.csv'
 # personal_data_f = os.path.join(files_dir, 'personal_data.csv')
-ranking_num = '2'
+ranking_num = '3'
 ranking_data_f = os.path.join(files_dir, 'ranking_data_{}.csv'.format(ranking_num))
 
 # pdf = pd.read_csv(personal_data_f)
